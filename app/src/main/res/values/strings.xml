@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Finder Feast</string>
+    <string name="title_near_me">Near Me</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_recommendations">Recommendations</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="sign_up">Sign up</string>
+    <string name="login">Login</string>
+    <string name="categories">Categories</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="submit">Submit</string>
+</resources>
