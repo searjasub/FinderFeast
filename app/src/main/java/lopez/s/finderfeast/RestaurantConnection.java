@@ -18,6 +18,8 @@ public class RestaurantConnection {
     private static String result;
     private static AsyncHttpClient client = new AsyncHttpClient();
 
+
+
     public static String get(String url, RequestParams params) {
         client.addHeader("user-key", keyCode);
         client.get(getAbsoluteUrl(url), params, new JsonHttpResponseHandler() {
