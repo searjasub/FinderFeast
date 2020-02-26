@@ -50,6 +50,12 @@ public class RestaurantConnection {
         return get("/search", rp);
     }
 
+    public static String getRestaurantInfo(String id) {
+        RequestParams rp = new RequestParams();
+        rp.add("res_id", id);
+        return get("/restaurant", rp);
+    }
+
     public static String getCategories() {
         return get("/categories", new RequestParams());
     }
