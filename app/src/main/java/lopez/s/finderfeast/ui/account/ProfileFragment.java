@@ -30,12 +30,6 @@ public class ProfileFragment extends Fragment {
                 textView.setText(s);
             }
         });
-
-        final TextView textName = root.findViewById(R.id.text_name);
-        final TextView favoritesList = root.findViewById((R.id.favoritesList));
-
-        textName.setText("Testing name");
-
         return root;
     }
 }
