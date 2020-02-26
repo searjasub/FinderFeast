@@ -60,7 +60,7 @@ public class NearMeFragment extends Fragment {
                 RequestParams rp = new RequestParams();
                 TextView textbox = root.findViewById(R.id.categories);
                 textbox.setText("Please wait....");
-                textbox.setText(RestaurantConnection.getNearby(lat, lon, 0));
+                textbox.setText((CharSequence) RestaurantConnection.getNearby(lat, lon, 0));
             }
         });
 
