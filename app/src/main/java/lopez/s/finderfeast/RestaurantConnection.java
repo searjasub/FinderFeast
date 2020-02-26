@@ -15,17 +15,17 @@ public class RestaurantConnection {
 
     private static final String BASE_URL = "https://developers.zomato.com/api/v2.1/";
     private static String keyCode = "d3b965d17f5d9cdd0c08e4d1d6ed47e2";
-    private static String result;
+    private static JSONObject result;
     private static AsyncHttpClient client = new AsyncHttpClient();
 
-    public static String get(String url, RequestParams params) {
+    public static JSONObject get(String url, RequestParams params) {
         client.addHeader("user-key", keyCode);
         client.get(getAbsoluteUrl(url), params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] header, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
                 Log.d("asd", "---------------- this is response : " + response);
-                result = response.toString();
+                result = response;
                 try {
                     JSONObject serverResp = new JSONObject(response.toString());
                 } catch (JSONException e) {
@@ -37,7 +37,7 @@ public class RestaurantConnection {
         return result;
     }
 
-    public static String getNearby(double lat, double lon, double radius) {
+    public static JSONObject getNearby(double lat, double lon, double radius) {
         RequestParams rp = new RequestParams();
         if (radius == 0) {
             radius = 1000;
@@ -48,7 +48,7 @@ public class RestaurantConnection {
         return get("/search", rp);
     }
 
-    public static String getCategories() {
+    public static JSONObject getCategories() {
         return get("/categories", new RequestParams());
     }
 
