@@ -5,6 +5,7 @@ import android.util.Log;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.mongodb.util.JSON;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,31 +16,30 @@ public class RestaurantConnection {
 
     private static final String BASE_URL = "https://developers.zomato.com/api/v2.1/";
     private static String keyCode = "d3b965d17f5d9cdd0c08e4d1d6ed47e2";
-    private static String result;
     private static AsyncHttpClient client = new AsyncHttpClient();
+    private static JSONObject result;
 
 
-
-    public static String get(String url, RequestParams params) {
+    public static JSONObject get(String url, RequestParams params) {
         client.addHeader("user-key", keyCode);
         client.get(getAbsoluteUrl(url), params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] header, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
                 Log.d("asd", "---------------- this is response : " + response);
-                result = response.toString();
-                try {
-                    JSONObject serverResp = new JSONObject(response.toString());
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                result = response;
+//                try {
+//                    JSONObject serverResp = new JSONObject(response.toString());
+//                } catch (JSONException e) {
+//                    // TODO Auto-generated catch block
+//                    e.printStackTrace();
+//                }
             }
         });
         return result;
     }
 
-    public static String getNearby(double lat, double lon, double radius) {
+    public static JSONObject getNearby(double lat, double lon, double radius) {
         RequestParams rp = new RequestParams();
         if (radius == 0) {
             radius = 1000;
@@ -50,7 +50,25 @@ public class RestaurantConnection {
         return get("/search", rp);
     }
 
-    public static String getCategories() {
+    public static JSONObject getMenu(String id) {
+        RequestParams rp = new RequestParams();
+        rp.add("res_id", id);
+        return get("/dailymenu", rp);
+    }
+
+    public static JSONObject getReviews(String id) {
+        RequestParams rp = new RequestParams();
+        rp.add("res_id", id);
+        return get("/reviews", rp);
+    }
+
+    public static JSONObject getRestaurantInfo(String id) {
+        RequestParams rp = new RequestParams();
+        rp.add("res_id", id);
+        return get("/restaurant", rp);
+    }
+
+    public static JSONObject getCategories() {
         return get("/categories", new RequestParams());
     }
 
