@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,8 +34,10 @@ public class NearMeFragment extends Fragment {
     private Button button;
     private Button button2;
     private FusedLocationProviderClient client;
-    private double lat;
-    private double lon;
+    private double lat = 40;
+    private double lon = -111;
+    private ListView listview;
+    String list[] = {"Jelly", "Peanut", "Butter", "Jam", "Bread", "Ham", "Turkey", "Sausage", "Mustard", "Mayonnaise", "Lettuce", "Tomato"};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,7 +64,7 @@ public class NearMeFragment extends Fragment {
                 RequestParams rp = new RequestParams();
                 TextView textbox = root.findViewById(R.id.categories);
                 textbox.setText("Please wait....");
-                textbox.setText((CharSequence) RestaurantConnection.getNearby(lat, lon, 0));
+                textbox.setText((CharSequence)RestaurantConnection.getNearby(lat, lon, 0));
             }
         });
 
@@ -79,14 +83,18 @@ public class NearMeFragment extends Fragment {
                         if(location!= null) {
                             TextView textView = root.findViewById(R.id.location);
                             textView.setText("Latitude: " + location.getLatitude() + " \nLongitude:" + location.getLongitude());
-                            lon = location.getLongitude();
                             lat = location.getLatitude();
+                            lon = location.getLongitude();
                         }
                     }
                 });
             }
         });
 
+        listview = root.findViewById(R.id.listview);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, list);
+
+        listview.setAdapter(arrayAdapter);
         return root;
     }
 
