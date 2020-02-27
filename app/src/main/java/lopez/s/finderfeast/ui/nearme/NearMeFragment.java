@@ -32,8 +32,8 @@ public class NearMeFragment extends Fragment {
     private Button button;
     private Button button2;
     private FusedLocationProviderClient client;
-    private double lat;
-    private double lon;
+    private double lat = 40;
+    private double lon = -111;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
