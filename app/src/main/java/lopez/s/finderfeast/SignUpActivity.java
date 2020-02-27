@@ -45,9 +45,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void submit(View view) {
-        Log.d("methodCheck", "We got to the submit method.");
-        Log.d("emailCheck", email.getText().toString());
-        Log.d("passwordCheck", password.getText().toString());
         signUp(email.getText().toString(), password.getText().toString());
     }
 
@@ -65,6 +62,8 @@ public class SignUpActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 //Check sign up successful and change the screen to be logged in.
+                                Log.d("createdUser", "UserCreated.");
+                                FirebaseUser user = mAuth.getCurrentUser();
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 startActivity(intent);
                             } else {

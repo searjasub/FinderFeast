@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signIn(String email, String password) {
+        Log.d("signInMethod", "We got to the signInMethod.");
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -79,7 +80,9 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             System.out.println("signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Log.d("signInSuccess", "Got to sign in.");
                             if (user != null) {
+                                Log.d("user", "user is not null.");
                                 updateUI(user);
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
@@ -89,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             System.out.println("signInWithEmail:failure \n" + task.getException());
+                            Log.d("signInFail", task.getException().getMessage());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 //                            updateUI(null);
