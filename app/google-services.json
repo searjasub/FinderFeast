@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "514431356625-nju7ptq94e1tfuv2jpd3hmusnssu4gke.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lopez.s.finderfeast",
+            "certificate_hash": "4c8316c7d59dd71fd1a386bb84c4ed9ee7c039ee"
+          }
+        },
+        {
           "client_id": "514431356625-93v740krsrh2h8r3ce2op0fdvg8e1n84.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
