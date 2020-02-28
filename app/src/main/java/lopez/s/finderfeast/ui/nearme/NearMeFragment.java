@@ -32,6 +32,8 @@ public class NearMeFragment extends Fragment {
     private Button button;
     private Button button2;
     private FusedLocationProviderClient client;
+    private double lat = 40;
+    private double lon = -111;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -77,6 +79,8 @@ public class NearMeFragment extends Fragment {
                         if(location!= null) {
                             TextView textView = root.findViewById(R.id.location);
                             textView.setText("Latitude: " + location.getLatitude() + " \nLongitude:" + location.getLongitude());
+                            lon = location.getLongitude();
+                            lat = location.getLatitude();
                         }
                     }
                 });
