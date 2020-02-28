@@ -36,6 +36,7 @@ public class NearMeFragment extends Fragment {
     private FusedLocationProviderClient client;
     private double lat = 40;
     private double lon = -111;
+
     private ListView listview;
     String list[] = {"Jelly", "Peanut", "Butter", "Jam", "Bread", "Ham", "Turkey", "Sausage", "Mustard", "Mayonnaise", "Lettuce", "Tomato"};
 
@@ -65,6 +66,7 @@ public class NearMeFragment extends Fragment {
                 TextView textbox = root.findViewById(R.id.categories);
                 textbox.setText("Please wait....");
                 textbox.setText((CharSequence)RestaurantConnection.getNearby(lat, lon, 0));
+
             }
         });
 
