@@ -7,6 +7,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.mongodb.util.JSON;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,6 +48,23 @@ public class RestaurantConnection {
         rp.add("lat", Double.toString(lat));
         rp.add("lon", Double.toString(lon));
         rp.add("radius", Double.toString(radius));
+        return get("/search", rp);
+    }
+
+    public static JSONObject getCuisines() {
+        return get("/cuisines", new RequestParams());
+    }
+
+    public static JSONObject getNearby(double lat, double lon, double radius, String[] rawCuisineIDs) {
+        String cuisineIDs = "";
+        for(String cuisineID : rawCuisineIDs) {
+            cuisineIDs += cuisineID + ",";
+        }
+        RequestParams rp = new RequestParams();
+        rp.add("lat", Double.toString(lat));
+        rp.add("lon", Double.toString(lon));
+        rp.add("radius", Double.toString(radius));
+        rp.add("cuisines", cuisineIDs);
         return get("/search", rp);
     }
 
