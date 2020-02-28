@@ -75,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.e("Reach", "On Complete finished." + task.isSuccessful());
                         if (task.isSuccessful()) {
                             Log.e("Reach", "task was successful.");
                             // Sign in success, update UI with the signed-in user's information
