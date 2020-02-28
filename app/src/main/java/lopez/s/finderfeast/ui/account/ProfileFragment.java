@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -12,11 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import lopez.s.finderfeast.R;
 
 public class ProfileFragment extends Fragment {
 
     private ProfileViewModel profileViewModel;
+    private Button signOutBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +34,24 @@ public class ProfileFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        final TextView textName = root.findViewById(R.id.text_name);
+        final TextView favoritesList = root.findViewById((R.id.favoritesList));
+
+        textName.setText("Testing name");
+
+        signOutBtn = root.findViewById(R.id.signOutBtn);
+        signOutBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
+
         return root;
+    }
+
+    public void signOut() {
+        FirebaseAuth.getInstance().signOut();
     }
 }

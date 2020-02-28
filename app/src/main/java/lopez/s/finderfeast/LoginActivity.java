@@ -44,9 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser currentUser) {
-
-        loginText.setText(currentUser.getEmail() + "singed in.");
-
+        loginText.setText(currentUser.getEmail() + "signed in.");
     }
 
     @Override
@@ -56,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
 
 //        DatabaseConnection.connect();
         mAuth = FirebaseAuth.getInstance();
-
     }
 
     public void signUp(View view) {
@@ -71,15 +68,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signIn(String email, String password) {
+        Log.e("Reach", "Sign in reached.");
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Log.e("Reach", "task was successful.");
                             // Sign in success, update UI with the signed-in user's information
                             System.out.println("signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             if (user != null) {
+                                Log.e("Reach", "User was not null");
                                 updateUI(user);
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
@@ -89,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             System.out.println("signInWithEmail:failure \n" + task.getException());
+                            Log.e("Reach", task.getException().getLocalizedMessage());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
 //                            updateUI(null);
@@ -99,7 +100,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-
+        Log.e("Reach", "Login method.");
+        System.out.println("Reached the Login method.");
         signIn(username.getText().toString(), password.getText().toString());
 
     }

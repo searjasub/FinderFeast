@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1001857998757",
+    "firebase_url": "https://finder-feast.firebaseio.com",
+    "project_id": "finder-feast",
+    "storage_bucket": "finder-feast.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001857998757:android:87ac0db46170d7c55c924c",
+        "android_client_info": {
+          "package_name": "lopez.s.finderfeast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001857998757-02qpskse4u1daqkbdu3221e9pq45u4qi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lopez.s.finderfeast",
+            "certificate_hash": "c380e79842ec4109421f5319817f53c739fda4be"
+          }
+        },
+        {
+          "client_id": "1001857998757-3q1rf8bsfnr0jkddjn3eab2ecnm3kkeq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPJMrAqBnToM0MEmri98hXbQxSLmb7GAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001857998757-3q1rf8bsfnr0jkddjn3eab2ecnm3kkeq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
