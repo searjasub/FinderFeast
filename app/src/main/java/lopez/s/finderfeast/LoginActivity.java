@@ -44,9 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser currentUser) {
-
         loginText.setText(currentUser.getEmail() + "signed in.");
-
     }
 
     @Override
