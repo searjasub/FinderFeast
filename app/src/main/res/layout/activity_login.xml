@@ -14,7 +14,8 @@
         android:layout_gravity="center"
         android:src="@drawable/finderfeastlogo"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:background="#fff"
